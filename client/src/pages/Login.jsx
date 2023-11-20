@@ -13,7 +13,16 @@ const Login = () => {
 					username: username,
 					password: password,
 				}),
+				credentials: "include",
 			});
+			const accessToken = response.headers.get("set-cookie");
+			if (accessToken) {
+				// Do something with the token if needed
+				console.log("Received access token:", accessToken);
+			} else {
+				console.log("no cookie");
+				console.log(response.headers.get("set-cookie"));
+			}
 		} catch (err) {
 			console.error(err);
 		}

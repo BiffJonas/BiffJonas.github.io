@@ -1,4 +1,5 @@
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
+const { createTokens } = require("./JWTAuth.js");
 
 const uri =
 	"mongodb+srv://BiffJonas:InfoBord@clustertest.ufs5xht.mongodb.net/?retryWrites=true&w=majority";
@@ -81,6 +82,37 @@ const deleteDocument = async (req, res) => {
 //inga routes ska fungera utan token
 
 const loginRoute = async (req, res) => {
+	try {
+		const { username, password } = req.body;
+		const data = await client
+			.db("test")
+			.collection("user")
+			.find({ username: username, password: password })
+			.toArray();
+
+		if (!data[0]) {
+			console.log("user doesn't exist");
+			return res.status(401).json({ message: "user doesn't exist" });
+		} else {
+			const user = data[0];
+			console.log(user);
+			console.log("user exists");
+			const accessToken = createTokens(user);
+			res.cookie("access-token", accessToken, {
+				maxAge: 60 * 60 * 24 * 1000,
+				sameSite: "None",
+				secure: true,
+			});
+			res.json("user Logged in");
+			console.log("loggedin");
+		}
+	} catch (err) {
+		console.error(err);
+		res.status(500).json({ error: "Internal Server Error" });
+	}
+};
+
+const registrationRoute = async (req, res) => {
 	const { username, password } = req.body;
 	const data = await client
 		.db("test")
