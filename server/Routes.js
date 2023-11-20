@@ -43,11 +43,15 @@ const getDocument = async (req, res) => {
 
 const insertDocument = async (req, res) => {
 	try {
-		const { document } = req.body;
+		const { header, image, description } = req.body;
 		const data = await client
 			.db("test")
 			.collection("posts")
-			.insertOne({ item: document });
+			.insertOne({
+				header: header,
+				image: image,
+				description: description,
+			});
 		res.json(data);
 	} catch (err) {
 		console.log("Server: Could not insert document ");

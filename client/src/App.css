@@ -3,4 +3,24 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column;
+	padding: 5em;
+}
+
+.btn {
+	width: 10em;
+}
+
+img {
+	max-width: 300px;
+	max-height: 300px;
+}
+
+.hello {
+	width: 300px;
+	background-color: red;
+	height: 300px;
+}
+textarea {
+	height: 15vh;
 }
