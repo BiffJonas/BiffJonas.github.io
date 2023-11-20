@@ -7,6 +7,7 @@ const {
 	insertDocument,
 	deleteDocument,
 	getDocument,
+	loginRoute,
 } = require("./Routes");
 
 const PORT = 5000;
@@ -17,6 +18,10 @@ app.use(express.json());
 //TODO JWT authentication middleware
 
 //ROUTES//
+
+//Login for JWT Token
+
+app.post(`/login`, loginRoute);
 
 //get collection
 app.get(`/api/collection`, getCollection);

@@ -44,14 +44,11 @@ const getDocument = async (req, res) => {
 const insertDocument = async (req, res) => {
 	try {
 		const { header, image, description } = req.body;
-		const data = await client
-			.db("test")
-			.collection("posts")
-			.insertOne({
-				header: header,
-				image: image,
-				description: description,
-			});
+		const data = await client.db("test").collection("posts").insertOne({
+			header: header,
+			image: image,
+			description: description,
+		});
 		res.json(data);
 	} catch (err) {
 		console.log("Server: Could not insert document ");
@@ -77,4 +74,26 @@ const deleteDocument = async (req, res) => {
 	}
 };
 
-module.exports = { getCollection, getDocument, insertDocument, deleteDocument };
+//Login post route
+// react ska göra en fetch till den från localhost3000/login
+//i routen får du en token som ger dig tillkomst till alla andra hemsidor
+//försöker du nå en annan hemsida utan valid token skickas du tillbaka till login
+//inga routes ska fungera utan token
+
+const loginRoute = async (req, res) => {
+	const { username, password } = req.body;
+	const data = await client
+		.db("test")
+		.collection("user")
+		.insertOne({ username: username, password: password });
+
+	console.log(data);
+};
+
+module.exports = {
+	getCollection,
+	getDocument,
+	insertDocument,
+	deleteDocument,
+	loginRoute,
+};
