@@ -14,6 +14,7 @@ const GetCollection = () => {
 					method: "GET",
 					headers: { "Content-Type": "application/json" },
 					credentials: "include",
+					mode: "cors",
 				}
 			);
 			const data = await response.json();
@@ -52,5 +53,4 @@ const GetCollection = () => {
 		</div>
 	);
 };
-
 export default GetCollection;

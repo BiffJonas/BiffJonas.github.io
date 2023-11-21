@@ -99,9 +99,12 @@ const loginRoute = async (req, res) => {
 			console.log("user exists");
 			const accessToken = createTokens(user);
 			res.cookie("access-token", accessToken, {
-				maxAge: 60 * 60 * 24 * 1000,
-				sameSite: "None",
+				httpOnly: true,
+				sameSite: "none",
+				maxAge: 1000 * 10,
 				secure: true,
+				domain: "localhost", // Add this line
+				path: "/",
 			});
 			res.json("user Logged in");
 			console.log("loggedin");

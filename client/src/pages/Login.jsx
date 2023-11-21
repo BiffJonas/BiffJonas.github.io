@@ -14,6 +14,7 @@ const Login = () => {
 					password: password,
 				}),
 				credentials: "include",
+				mode: "cors",
 			});
 			const accessToken = response.headers.get("set-cookie");
 			if (accessToken) {
@@ -21,7 +22,7 @@ const Login = () => {
 				console.log("Received access token:", accessToken);
 			} else {
 				console.log("no cookie");
-				console.log(response.headers.get("set-cookie"));
+				console.log(response);
 			}
 		} catch (err) {
 			console.error(err);
