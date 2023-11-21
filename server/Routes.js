@@ -103,7 +103,7 @@ const loginRoute = async (req, res) => {
 				sameSite: "none",
 				maxAge: 1000 * 10,
 				secure: true,
-				domain: "localhost", // Add this line
+				domain: "localhost",
 				path: "/",
 			});
 			res.json("user Logged in");
