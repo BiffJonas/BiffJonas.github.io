@@ -35,7 +35,7 @@ function App() {
 
 	//TODO sanitize all user inputs
 	return (
-		<Home />
+		<h1>hello wrld</h1>
 		// <Router>
 		// 	<Header />
 		// 	<Routes>
