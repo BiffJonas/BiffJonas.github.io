@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import "./App.css";
 import Admin from "./pages/Admin";
 import Home from "./pages/Home";
@@ -35,7 +36,20 @@ function App() {
 
 	//TODO sanitize all user inputs
 	return (
-		<h1>hello wrld</h1>
+		<div>
+			<Header />
+			<Home
+				header={item.header ? item.header : "Welcome"}
+				imgSource={item.image ? item.image : defaultImage}
+				description={item.description}
+			/>
+			<button
+				className="btn btn-primary"
+				onClick={getRandomItem}
+			>
+				Get random item
+			</button>
+		</div>
 		// <Router>
 		// 	<Header />
 		// 	<Routes>
