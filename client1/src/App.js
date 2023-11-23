@@ -35,39 +35,40 @@ function App() {
 
 	//TODO sanitize all user inputs
 	return (
-		<Router>
-			<Header />
-			<Routes>
-				<Route
-					path="/admin"
-					element={<Admin />}
-				/>
-				<Route
-					path="/"
-					element={
-						<>
-							<Home
-								header={item.header ? item.header : "Welcome"}
-								imgSource={
-									item.image ? item.image : defaultImage
-								}
-								description={item.description}
-							/>
-							<button
-								className="btn btn-primary"
-								onClick={getRandomItem}
-							>
-								Get random item
-							</button>
-						</>
-					}
-				/>
-				<Route
-					path="/login"
-					element={<Login />}
-				/>
-			</Routes>
-		</Router>
+		<Home />
+		// <Router>
+		// 	<Header />
+		// 	<Routes>
+		// 		<Route
+		// 			path="/admin"
+		// 			element={<Admin />}
+		// 		/>
+		// 		<Route
+		// 			path="/"
+		// 			element={
+		// 				<>
+		// 					<Home
+		// 						header={item.header ? item.header : "Welcome"}
+		// 						imgSource={
+		// 							item.image ? item.image : defaultImage
+		// 						}
+		// 						description={item.description}
+		// 					/>
+		// 					<button
+		// 						className="btn btn-primary"
+		// 						onClick={getRandomItem}
+		// 					>
+		// 						Get random item
+		// 					</button>
+		// 				</>
+		// 			}
+		// 		/>
+		// 		<Route
+		// 			path="/login"
+		// 			element={<Login />}
+		// 		/>
+		// 	</Routes>
+		// </Router>
 	);
 }
 
